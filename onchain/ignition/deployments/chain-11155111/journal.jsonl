@@ -1,0 +1,3 @@
+
+{"chainId":11155111,"type":"DEPLOYMENT_INITIALIZE"}
+{"artifactId":"GameModule#GameContract","constructorArgs":["\"0x2cd0a24aCAC1ee774443A28BD28C46E2D8e3a091"],"contractName":"GameContract","dependencies":[],"from":"0xd103929e56b9aab3ce786429d2088a98adaa9c9e","futureId":"GameModule#GameContract","futureType":"NAMED_ARTIFACT_CONTRACT_DEPLOYMENT","libraries":{},"strategy":"basic","strategyConfig":{},"type":"DEPLOYMENT_EXECUTION_STATE_INITIALIZE","value":{"_kind":"bigint","value":"0"}}

@@ -1,0 +1,117 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/thirumurugansivalingam/Desktop/snake-babu/onchain/contracts/GameContract.sol": {
+      "lastModificationDate": 1723173959512,
+      "contentHash": "ee41578a46b897f223ee3eeca3faa918",
+      "sourceName": "contracts/GameContract.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./SpinContract.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "GameContract"
+      ]
+    },
+    "/Users/thirumurugansivalingam/Desktop/snake-babu/onchain/contracts/SpinContract.sol": {
+      "lastModificationDate": 1723034661545,
+      "contentHash": "e965b479fb70027e40fee7cd243cc39e",
+      "sourceName": "contracts/SpinContract.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IVerifier.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SpinContract"
+      ]
+    },
+    "/Users/thirumurugansivalingam/Desktop/snake-babu/onchain/contracts/IVerifier.sol": {
+      "lastModificationDate": 1723034661544,
+      "contentHash": "006ec3512e59a92e68f7d0159963c4d9",
+      "sourceName": "contracts/IVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IZKVerifier"
+      ]
+    }
+  }
+}

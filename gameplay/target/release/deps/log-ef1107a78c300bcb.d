@@ -1,0 +1,10 @@
+/Users/thirumurugansivalingam/Desktop/snake-babu/gameplay/target/release/deps/liblog-ef1107a78c300bcb.rmeta: /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/lib.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/macros.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/serde.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/__private_api.rs
+
+/Users/thirumurugansivalingam/Desktop/snake-babu/gameplay/target/release/deps/liblog-ef1107a78c300bcb.rlib: /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/lib.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/macros.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/serde.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/__private_api.rs
+
+/Users/thirumurugansivalingam/Desktop/snake-babu/gameplay/target/release/deps/log-ef1107a78c300bcb.d: /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/lib.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/macros.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/serde.rs /Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/__private_api.rs
+
+/Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/lib.rs:
+/Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/macros.rs:
+/Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/serde.rs:
+/Users/thirumurugansivalingam/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.21/src/__private_api.rs:
