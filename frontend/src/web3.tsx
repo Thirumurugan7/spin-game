@@ -34,7 +34,7 @@ createWeb3Modal({
   enableOnramp: true, // Optional - false as default
 });
 
-export function Web3ModalProvider({ children }) {
+export function Web3ModalProvider({ children }:any) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

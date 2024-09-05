@@ -22,7 +22,7 @@ interface GameState {
     x_position: bigint;
     y_position: bigint;
     highscore: bigint;
-    player_highscore: any;
+    player_highscore: bigint;
     
 }
 
@@ -136,6 +136,9 @@ if(!isConnected){
         player_highscore: BigInt(0)
     });
 
+    console.log("game",gameState);
+    
+
     const [onChainGameStates, setOnChainGameStates] = useState<GameState>({
         x_position: BigInt(0),
         y_position: BigInt(0),
@@ -144,7 +147,11 @@ if(!isConnected){
 
     });
 
+    console.log("onchainStates", onChainGameStates);
+    
+
     const [moves, setMoves] = useState<bigint[]>([]);
+console.log("moves",moves);
 
     const onClick = (command: bigint) => () => {
         spin.step(command);
@@ -193,6 +200,7 @@ console.log("proof",proof);
             x_position: gameStates[0],
             y_position: gameStates[1],
             highscore: gameStates[2],
+            player_highscore: gameStates[3]
         });
 
         await spin.reset();
