@@ -1,6 +1,5 @@
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-
 import { WagmiProvider } from "wagmi";
 import { sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -19,7 +18,32 @@ const metadata = {
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
-const chains = [sepolia] as const;
+const spinGlassSepolia = {
+  id: 9455977,
+  name: "Spin Glass Sepolia",
+  network: "spin-glass-sepolia",
+
+  nativeCurrency: {
+    name: "ETH",
+    symbol: "ETH",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://spin-glass-sepolia.rpc.caldera.xyz/http"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Spin Glass Explorer",
+      url: "https://spin-glass-sepolia.explorer.caldera.xyz/", // Replace with the correct explorer URL if available
+    },
+  },
+  testnet: true,
+};
+
+
+const chains = [spinGlassSepolia ] as const;
 export const config = defaultWagmiConfig({
   chains,
   projectId,
