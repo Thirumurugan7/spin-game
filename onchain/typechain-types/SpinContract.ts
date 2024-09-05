@@ -30,6 +30,7 @@ export interface SpinContractInterface extends Interface {
       | "setOwner"
       | "setVerifier"
       | "setVerifierImageCommitments"
+      | "settleProof"
       | "verifier"
       | "zk_image_commitments"
   ): FunctionFragment;
@@ -49,6 +50,10 @@ export interface SpinContractInterface extends Interface {
     functionFragment: "setVerifierImageCommitments",
     values: [[BigNumberish, BigNumberish, BigNumberish]]
   ): string;
+  encodeFunctionData(
+    functionFragment: "settleProof",
+    values: [BigNumberish[], BigNumberish[], BigNumberish[], BigNumberish[][]]
+  ): string;
   encodeFunctionData(functionFragment: "verifier", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "zk_image_commitments",
@@ -63,6 +68,10 @@ export interface SpinContractInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setVerifierImageCommitments",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "settleProof",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "verifier", data: BytesLike): Result;
@@ -143,6 +152,17 @@ export interface SpinContract extends BaseContract {
     "nonpayable"
   >;
 
+  settleProof: TypedContractMethod<
+    [
+      proof: BigNumberish[],
+      verify_instance: BigNumberish[],
+      aux: BigNumberish[],
+      instances: BigNumberish[][]
+    ],
+    [void],
+    "nonpayable"
+  >;
+
   verifier: TypedContractMethod<[], [string], "view">;
 
   zk_image_commitments: TypedContractMethod<
@@ -168,6 +188,18 @@ export interface SpinContract extends BaseContract {
     nameOrSignature: "setVerifierImageCommitments"
   ): TypedContractMethod<
     [commitments: [BigNumberish, BigNumberish, BigNumberish]],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "settleProof"
+  ): TypedContractMethod<
+    [
+      proof: BigNumberish[],
+      verify_instance: BigNumberish[],
+      aux: BigNumberish[],
+      instances: BigNumberish[][]
+    ],
     [void],
     "nonpayable"
   >;

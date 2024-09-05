@@ -18,11 +18,13 @@ pub fn zkmain() -> i64 {
     let public_input_0_total_steps: u64 = unsafe { wasm_input(1) };
     let public_input_1_current_position: u64 = unsafe { wasm_input(1) };
     let public_input_1_highscore: u64 = unsafe { wasm_input(1) };
+    let public_input_1_player_highscore: u64 = unsafe { wasm_input(1) };
 
     SpinGame::initialize_game(SpinGameInitArgs {
         x_position: public_input_0_total_steps,
         y_position: public_input_1_current_position,
         highscore: public_input_1_highscore,
+        player_highscore: public_input_1_player_highscore
     });
 
     // specify the private inputs
@@ -41,6 +43,7 @@ pub fn zkmain() -> i64 {
         wasm_output(final_game_state.x_position as u64);
         wasm_output(final_game_state.y_position as u64);
         wasm_output(final_game_state.highscore as u64);
+        wasm_output(final_game_state.player_highscore as u64);
     }
 
     0

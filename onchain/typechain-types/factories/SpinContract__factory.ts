@@ -72,6 +72,34 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "uint256[]",
+        name: "proof",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "verify_instance",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "aux",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[][]",
+        name: "instances",
+        type: "uint256[][]",
+      },
+    ],
+    name: "settleProof",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "verifier",
     outputs: [

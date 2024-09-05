@@ -10,7 +10,7 @@ import Monitor from './assets/oldMonitor.png';
 import useInterval from './hooks/useInterval';
 import { Spin, SpinGameInitArgs } from "spin";
 
-
+import { useAccount } from 'wagmi';
 
 const GAME_CONTRACT_ADDRESS = import.meta.env.VITE_GAME_CONTRACT_ADDRESS;
 const ZK_USER_ADDRESS = import.meta.env.VITE_ZK_CLOUD_USER_ADDRESS;
@@ -22,6 +22,7 @@ interface GameState {
     x_position: bigint;
     y_position: bigint;
     highscore: bigint;
+    player_highscore: any;
     
 }
 
@@ -72,26 +73,37 @@ async function getOnchainGameStates() {
         address: GAME_CONTRACT_ADDRESS,
         functionName: "getStates",
         args: [],
-    })) as [bigint, bigint, bigint];
+    })) as [bigint, bigint, bigint, any];
     return result;
 }
 
 let spin: Spin;
 
 function App() {
+
+
+  const {isConnected} = useAccount()
     useEffect(() => {
+if(!isConnected){
+  console.log("not connected");
+  
+  return
+}
         getOnchainGameStates().then(async (result): Promise<any> => {
             const x_position = result[0];
             const y_position = result[1];
             const highscore = result[2];
+            const player_highscore = result[3];
 
             console.log("x_position = ", x_position);
             console.log("y_position = ", y_position);
             console.log("highscore = ", highscore);
+            console.log("playerHighScore = ", player_highscore);
             setOnChainGameStates({
                 x_position,
                 y_position,
-                highscore
+                highscore,
+                player_highscore
             });
 
             spin = new Spin({
@@ -102,10 +114,14 @@ function App() {
                     IMAGE_HASH: ZK_IMAGE_MD5,
                 },  
             });
+
+            console.log("before jdcfsd",spin);
+            
             spin.initialize_import().then(() => {
                 const arg = new SpinGameInitArgs( x_position,
                     y_position,
-                    highscore);
+                    highscore,
+                    player_highscore);
                 console.log("arg = ", arg);
                 spin.initialize_game(arg);
                 updateDisplay();
@@ -116,13 +132,16 @@ function App() {
     const [gameState, setGameState] = useState<GameState>({
         x_position: BigInt(0),
         y_position: BigInt(0),
-        highscore: BigInt(0)
+        highscore: BigInt(0),
+        player_highscore: BigInt(0)
     });
 
     const [onChainGameStates, setOnChainGameStates] = useState<GameState>({
         x_position: BigInt(0),
         y_position: BigInt(0),
-        highscore: BigInt(0)
+        highscore: BigInt(0),
+        player_highscore: BigInt(0),
+
     });
 
     const [moves, setMoves] = useState<bigint[]>([]);
@@ -138,6 +157,7 @@ function App() {
             x_position: newGameState.x_position,
             y_position: newGameState.y_position,
             highscore: newGameState.highscore,
+            player_highscore: newGameState.player_highscore,
         });
         setMoves(spin.witness);
     };
@@ -258,39 +278,46 @@ console.log("proof",proof);
       }
       setSnake(newSnake);
     }
+
+
     function changeDirection(e: React.KeyboardEvent<HTMLDivElement>) {
       switch (e.key) {
         case 'ArrowLeft':
-          console.log("clicked left");
-          onClick(BigInt(0))
-          setDirection([-1, 0]);
+          if (direction[0] !== 1) {
+            console.log("clicked left");
+            onClick(BigInt(0));
+            setDirection([-1, 0]);
+          }
           break;
         case 'ArrowUp':
-          console.log("clicked up");
-          onClick(BigInt(1))
-
-          setDirection([0, -1]);
+          if (direction[1] !== 1) {
+            console.log("clicked up");
+            onClick(BigInt(1));
+            setDirection([0, -1]);
+          }
           break;
         case 'ArrowRight':
-          console.log("clicked right");
-          onClick(BigInt(0))
-
-          setDirection([1, 0]);
+          if (direction[0] !== -1) {
+            console.log("clicked right");
+            onClick(BigInt(0));
+            setDirection([1, 0]);
+          }
           break;
         case 'ArrowDown':
-
-          console.log("clicked down");
-            onClick(BigInt(1))
-
-          setDirection([0, 1]);
+          if (direction[1] !== -1) {
+            console.log("clicked down");
+            onClick(BigInt(1));
+            setDirection([0, 1]);
+          }
           break;
       }
     }
+    
 
     return (
         <div className="App">
             
-
+            <w3m-button />
             <div onKeyDown={e => changeDirection(e)}>
       <img id="fruit" src={AppleLogo} alt="fruit" width="30" />
       <img src={Monitor} alt="fruit" width="4000" className="monitor" />

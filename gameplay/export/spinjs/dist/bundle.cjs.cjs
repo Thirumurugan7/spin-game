@@ -244,12 +244,26 @@ class SpinGameInitArgs {
         wasm.__wbg_set_spingameinitargs_highscore(this.__wbg_ptr, arg0);
     }
     /**
+    * @returns {bigint}
+    */
+    get player_highscore() {
+        const ret = wasm.__wbg_get_spingameinitargs_player_highscore(this.__wbg_ptr);
+        return BigInt.asUintN(64, ret);
+    }
+    /**
+    * @param {bigint} arg0
+    */
+    set player_highscore(arg0) {
+        wasm.__wbg_set_spingameinitargs_player_highscore(this.__wbg_ptr, arg0);
+    }
+    /**
     * @param {bigint} x_position
     * @param {bigint} y_position
     * @param {bigint} highscore
+    * @param {bigint} player_highscore
     */
-    constructor(x_position, y_position, highscore) {
-        const ret = wasm.spingameinitargs_new(x_position, y_position, highscore);
+    constructor(x_position, y_position, highscore, player_highscore) {
+        const ret = wasm.spingameinitargs_new(x_position, y_position, highscore, player_highscore);
         this.__wbg_ptr = ret >>> 0;
         return this;
     }
@@ -319,6 +333,19 @@ class SpinGameIntermediateStates {
     */
     set highscore(arg0) {
         wasm.__wbg_set_spingameinitargs_highscore(this.__wbg_ptr, arg0);
+    }
+    /**
+    * @returns {bigint}
+    */
+    get player_highscore() {
+        const ret = wasm.__wbg_get_spingameinitargs_player_highscore(this.__wbg_ptr);
+        return BigInt.asUintN(64, ret);
+    }
+    /**
+    * @param {bigint} arg0
+    */
+    set player_highscore(arg0) {
+        wasm.__wbg_set_spingameinitargs_player_highscore(this.__wbg_ptr, arg0);
     }
 }
 
@@ -685,6 +712,7 @@ var Spin = /** @class */ (function () {
         this.add_public_input(arg.x_position);
         this.add_public_input(arg.y_position);
         this.add_public_input(arg.highscore);
+        this.add_public_input(arg.player_highscore);
         this.gamePlay.init_game(arg);
         // TODO: dynamic add public inputs
         // args.map((a) => this.add_public_input(a));

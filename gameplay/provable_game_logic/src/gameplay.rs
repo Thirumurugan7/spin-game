@@ -19,6 +19,7 @@ impl SpinGameTrait for SpinGame {
         game_state.x_position = args.x_position;
         game_state.y_position = args.y_position;
         game_state.highscore = args.highscore;
+        game_state.player_highscore = args.player_highscore;
     }
 
     /* STATEFUL FUNCTIONS This is defines the logic when player moves one step/entering one command*/
@@ -36,7 +37,11 @@ impl SpinGameTrait for SpinGame {
 
             }
             2 => {
-                game_state.highscore +=1 ;
+                if game_state.player_highscore > game_state.highscore {
+                    game_state.highscore = game_state.player_highscore;
+                }
+                game_state.player_highscore += 1;
+
 
             }
 

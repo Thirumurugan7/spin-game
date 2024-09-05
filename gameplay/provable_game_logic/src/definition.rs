@@ -9,16 +9,19 @@ pub struct SpinGameInitArgs {
     pub x_position: u64,
     pub y_position: u64,
     pub highscore: u64,
+    pub player_highscore: u64
 }
 
 #[wasm_bindgen]
 impl SpinGameInitArgs {
     #[wasm_bindgen(constructor)]
-    pub fn new(x_position: u64, y_position: u64, highscore: u64) -> SpinGameInitArgs {
+    pub fn new(x_position: u64, y_position: u64, highscore: u64, player_highscore: u64) -> SpinGameInitArgs {
         SpinGameInitArgs {
             x_position,
             y_position,
-            highscore
+            highscore,
+            player_highscore
+
         }
     }
 }
@@ -30,6 +33,8 @@ pub struct SpinGameIntermediateStates {
     pub x_position: u64,
     pub y_position: u64,
     pub highscore: u64,
+    pub player_highscore: u64
+
 }
 
 impl SpinGameIntermediateStates {
@@ -38,6 +43,8 @@ impl SpinGameIntermediateStates {
             x_position: 0,
             y_position: 0,
             highscore: 0,
+          player_highscore:0
+
         }
     }
 }
@@ -46,8 +53,8 @@ impl fmt::Display for SpinGameIntermediateStates {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
             f,
-            "GameState {{ x_position: {}, y_position: {}, highscore: {} }}",
-            self.x_position, self.y_position, self.highscore
+            "GameState {{ x_position: {}, y_position: {}, highscore: {},player_highscore:{}  }}",
+            self.x_position, self.y_position, self.highscore, self.player_highscore
         )
     }
 }

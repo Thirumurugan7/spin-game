@@ -30,9 +30,11 @@ export interface GameContractInterface extends Interface {
       | "getStates"
       | "highscore"
       | "owner"
+      | "playerHighScore"
       | "setOwner"
       | "setVerifier"
       | "setVerifierImageCommitments"
+      | "settleProof"
       | "verifier"
       | "x_position"
       | "y_position"
@@ -43,11 +45,15 @@ export interface GameContractInterface extends Interface {
 
   encodeFunctionData(
     functionFragment: "DEV_ONLY_setStates",
-    values: [BigNumberish, BigNumberish, BigNumberish]
+    values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "getStates", values?: undefined): string;
   encodeFunctionData(functionFragment: "highscore", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "playerHighScore",
+    values: [AddressLike]
+  ): string;
   encodeFunctionData(
     functionFragment: "setOwner",
     values: [AddressLike]
@@ -59,6 +65,10 @@ export interface GameContractInterface extends Interface {
   encodeFunctionData(
     functionFragment: "setVerifierImageCommitments",
     values: [[BigNumberish, BigNumberish, BigNumberish]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "settleProof",
+    values: [BigNumberish[], BigNumberish[], BigNumberish[], BigNumberish[][]]
   ): string;
   encodeFunctionData(functionFragment: "verifier", values?: undefined): string;
   encodeFunctionData(
@@ -81,6 +91,10 @@ export interface GameContractInterface extends Interface {
   decodeFunctionResult(functionFragment: "getStates", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "highscore", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "playerHighScore",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "setOwner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setVerifier",
@@ -88,6 +102,10 @@ export interface GameContractInterface extends Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setVerifierImageCommitments",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "settleProof",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "verifier", data: BytesLike): Result;
@@ -158,17 +176,24 @@ export interface GameContract extends BaseContract {
     [
       _x_position: BigNumberish,
       _y_position: BigNumberish,
-      _highscore: BigNumberish
+      _highscore: BigNumberish,
+      _playerHighscore: BigNumberish
     ],
     [void],
     "nonpayable"
   >;
 
-  getStates: TypedContractMethod<[], [[bigint, bigint, bigint]], "view">;
+  getStates: TypedContractMethod<
+    [],
+    [[bigint, bigint, bigint, bigint]],
+    "view"
+  >;
 
   highscore: TypedContractMethod<[], [bigint], "view">;
 
   owner: TypedContractMethod<[], [string], "view">;
+
+  playerHighScore: TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
 
   setOwner: TypedContractMethod<[new_owner: AddressLike], [void], "nonpayable">;
 
@@ -180,6 +205,17 @@ export interface GameContract extends BaseContract {
 
   setVerifierImageCommitments: TypedContractMethod<
     [commitments: [BigNumberish, BigNumberish, BigNumberish]],
+    [void],
+    "nonpayable"
+  >;
+
+  settleProof: TypedContractMethod<
+    [
+      proof: BigNumberish[],
+      verify_instance: BigNumberish[],
+      aux: BigNumberish[],
+      instances: BigNumberish[][]
+    ],
     [void],
     "nonpayable"
   >;
@@ -206,20 +242,24 @@ export interface GameContract extends BaseContract {
     [
       _x_position: BigNumberish,
       _y_position: BigNumberish,
-      _highscore: BigNumberish
+      _highscore: BigNumberish,
+      _playerHighscore: BigNumberish
     ],
     [void],
     "nonpayable"
   >;
   getFunction(
     nameOrSignature: "getStates"
-  ): TypedContractMethod<[], [[bigint, bigint, bigint]], "view">;
+  ): TypedContractMethod<[], [[bigint, bigint, bigint, bigint]], "view">;
   getFunction(
     nameOrSignature: "highscore"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
+  getFunction(
+    nameOrSignature: "playerHighScore"
+  ): TypedContractMethod<[arg0: AddressLike], [bigint], "view">;
   getFunction(
     nameOrSignature: "setOwner"
   ): TypedContractMethod<[new_owner: AddressLike], [void], "nonpayable">;
@@ -230,6 +270,18 @@ export interface GameContract extends BaseContract {
     nameOrSignature: "setVerifierImageCommitments"
   ): TypedContractMethod<
     [commitments: [BigNumberish, BigNumberish, BigNumberish]],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "settleProof"
+  ): TypedContractMethod<
+    [
+      proof: BigNumberish[],
+      verify_instance: BigNumberish[],
+      aux: BigNumberish[],
+      instances: BigNumberish[][]
+    ],
     [void],
     "nonpayable"
   >;

@@ -59,6 +59,7 @@ export class Spin {
         this.add_public_input(arg.x_position);
         this.add_public_input(arg.y_position);
         this.add_public_input(arg.highscore);
+        this.add_public_input(arg.player_highscore);
         this.gamePlay.init_game(arg);
 
         // TODO: dynamic add public inputs
